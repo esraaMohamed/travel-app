@@ -7,7 +7,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin');
 module.exports = {
-    entry: './src/website/index.js',
+    entry: './src/client/index.js',
     mode: 'production',
     optimization : {
         minimizer: [new TerserPlugin({}), new OptimizeCssAssetsPlugin({})]
@@ -45,7 +45,7 @@ module.exports = {
     plugins: [
         new HtmlWebPackPlugin({
             inject: 'body',
-            template: "./src/website/views/index.html",
+            template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
         new CleanWebpackPlugin({
