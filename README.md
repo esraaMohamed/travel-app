@@ -28,3 +28,7 @@ This is the 5th project of Udacity front-end web developer nanodegree
 > [Geonames](http://geonames.org)
 > [Weatherbit](http://weatherbit.io)
 > [Pixabay](http://pixabay.com)
+
+
+### Preview
+![img](https://github.com/esraaMohamed/travel-app/blob/master/demo.gif)
