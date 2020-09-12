@@ -1,19 +1,27 @@
-// Setup empty JS object to act as endpoint for all routes
-projectData = [];
+const dotenv = require("dotenv");
+dotenv.config();
 const port = 3000;
+const fetch = require('node-fetch')
 
-// Require Express to run server and routes
+const geoNamesBaseUrl = 'http://api.geonames.org/searchJSON?'
+const forcastBaseUrl = 'http://api.weatherbit.io/v2.0/forecast/daily?'
+const currentBaseUrl = 'http://api.weatherbit.io/v2.0/current?'
+const pixabayBaseUrl = 'https://pixabay.com/api/'
+const GEO_USERNAME = 'esraa.moe'
+const WEATHER_BIT_API_KEY='7f7da3d5de0d4323b67fd0d80015d905'
+const PIXABAY_API_KEY='18274975-ed25d3ee86e523605e57107f9'
+
+
 const express = require("express");
-// Start up an instance of app
+const { getGeoData, getForcastWeather, getCurrentWeather, getPixaBayPhoto } = require("./apiHelper");
+
 const app = express();
 
-/* Middleware*/
-//Here we are configuring express to use body-parser as middle-ware.
+
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Cors for cross origin allowance
 const cors = require("cors");
 var allowedOrigins = ['http://localhost:8080'];
 app.use(cors({
@@ -27,7 +35,6 @@ app.use(cors({
     return callback(null, true);
   }
 }));
-// Initialize the main project folder
 app.use(express.static("dist"));
 
 console.log(__dirname);
@@ -35,26 +42,29 @@ console.log(__dirname);
 app.get("/", (req, res) => {
   res.sendFile("dist/index.html");
 });
-// Setup Server
+
 app.listen(port, () => {
   console.log(`App listening on localhost ${port}`);
 });
 
-app.post('/addEntry', (request, response) => {
-    const data = request.body
-    const newEntry = {
-        temperature: data.temperature,
-        date: data.date,
-        city: data.city,
-        weather: data.weather,
-        userResponse: data.userResponse
-    }
-    projectData.push(newEntry)
-    console.log(newEntry)
-    response.send('Entry Added')
+app.get('/geoData/:destination', (request, response) => {
+    const destination = request.params.destination
+    getGeoData(destination).then(data => response.send(data))
 })
 
-app.get('/getEntries', (request, response) => {
-  console.log(projectData)
-  response.send(projectData);
+app.get('/getWeatherForcast/:lat&:lng', (request, response) => {
+  const lat = request.params.lat
+  const lng = request.params.lng
+  getForcastWeather(lat, lng).then(data => response.send(data))
 });
+
+app.get('/getCurrentWeather/:lat&:lng', (request, response) => {
+  const lat = request.params.lat
+  const lng = request.params.lng
+  getCurrentWeather(lat,lng).then(data => response.send(data))
+})
+
+app.get('/getPhoto/:destination', (request, response) => {
+  const destination = request.params.destination
+  getPixaBayPhoto(destination).then(data => response.send(data))
+})

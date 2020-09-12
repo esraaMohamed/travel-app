@@ -4,6 +4,7 @@ form {
     border: 1px solid #545454;
     border-radius: 3px;
     padding: 40px;
+    box-shadow: 2px 2px 5px 5px $blueColor;
 }
 
 input {
@@ -17,9 +18,24 @@ input {
     border: 1px solid #545454;
     border-radius: 3px;
     padding: 40px;
+    box-shadow: 2px 2px 5px 5px $blueColor;
+
+    #forcast-weather {
+        display: flex;
+        width: 100%;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 
 .title {
     font-weight: 600;
     color: $blueColor;
+}
+
+.tripTitle {
+    font-weight: 600;
+    color: $blueColor;
+    font-size: 25px;
 }

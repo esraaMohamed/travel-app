@@ -9,7 +9,7 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 module.exports = {
     entry: './src/client/index.js',
     mode: 'production',
-    optimization : {
+    optimization: {
         minimizer: [new TerserPlugin({}), new OptimizeCssAssetsPlugin({})]
     },
     module: {
@@ -34,12 +34,12 @@ module.exports = {
                         publicPath: 'images'
                     }
                 }]
-            },{
-                test:/\.html$/,
+            }, {
+                test: /\.html$/,
                 use: [
-                  'html-loader'
+                    'html-loader'
                 ]
-              },
+            }
         ]
     },
     plugins: [

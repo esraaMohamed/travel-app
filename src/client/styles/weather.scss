@@ -1,0 +1,78 @@
+@import 'base.scss';
+
+.card {
+    justify-content: space-between;
+    width: 300px;
+    box-shadow: 2px 2px $blueColor;
+    border: 1px solid #545454;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 10px;
+
+    img {
+        align-content: center;
+        justify-content: center;
+    }
+    .static {
+        font-size: 16px;
+        align-self: center;
+        margin-right: 5px;
+        color: $blueColor;
+    }
+
+    .header1,
+    .header2,
+    .header3 {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: flex;
+        color: #e56b1f;
+    }
+
+    .header2 {
+        padding-bottom: 5px;
+        font-size: 20px;
+    }
+    
+    .header3 {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: $blueColor;
+    }
+}
+
+.infoCard {
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    .static {
+        font-size: 16px;
+        align-self: center;
+        margin-right: 5px;
+        color: $blueColor;
+    }
+
+    .header1,
+    .header2,
+    .header3 {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: flex;
+        color: #e56b1f;
+    }
+
+    .header2 {
+        padding-bottom: 5px;
+        padding-top: 5px;
+        font-size: 20px;
+    }
+    
+    .header3 {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: $blueColor;
+    }
+}

@@ -34,11 +34,11 @@ module.exports = {
                 }]
             },
             {
-                test:/\.html$/,
+                test: /\.html$/,
                 use: [
-                  'html-loader'
+                    'html-loader'
                 ]
-              },
+            },
         ]
     },
     plugins: [

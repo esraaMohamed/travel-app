@@ -25,8 +25,19 @@ section {
     border: 1px solid $error;
 }
 
-img {
-    max-width: 64px;
-    max-height: 64px;
+// img {
+//     max-width: 64px;
+//     max-height: 64px;
+// }
+
+.weatherIcon {
+    max-width: 32px;
+    max-height: 32px;
 }
 
+.photo {
+    width: 100%;
+    border: 1px solid #545454;
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px 5px $blueColor;
+}

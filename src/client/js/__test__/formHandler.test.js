@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>The Travel App</title>
-    </head>
+import { handleSubmit } from "../formHandler";
 
-    <body>
-
-        <header>
-            <div class="headerText">
-                The Travel App
-            </div>
-        </header>
-
-        <main>
-            <section>
+describe("Testing the handle submit functionality", () => {
+  test("Testing the handleSubmit() function", () => {
+    const event = new Event('click', { "target": { "value": 8 } })
+    jest.spyOn(event, 'preventDefault');
+    document.body.innerHTML += `
+    <section>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
                     <label class="title" for="destination">City Destination:
                     </label>
@@ -37,29 +28,9 @@
                     <div id="current-weather"></div>
                     <div id="forcast-weather"></div>
                 </section>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <h3>Contact Me
-            </h3>
-            <a href="https://github.com/esraaMohamed">
-                <img class="logos" src="images/github.jpg" alt="Github">
-            </a>
-            <a href="https://www.facebook.com/No0oU">
-                <img class="logos" src="images/facebook.png" alt="Facebook">
-            </a>
-            <a href="https://www.linkedin.com/in/esraa-afifi/">
-                <img class="logos" src="images/linkedin.png" alt="LinkedIn">
-            </a>
-        </footer>
-        <script>
-            // Check that service workers are supported
-            if ('serviceWorker' in navigator) { // Use the window load event to keep the page load performant
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/service-worker.js');
-                });
-            }
-        </script>
-    </body>
-</html>
+            </section>`;
+    handleSubmit(event)
+    expect(handleSubmit).toBeDefined();
+    expect(event.preventDefault).toHaveBeenCalled()
+  });
+});
