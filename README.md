@@ -26,7 +26,9 @@ This is the 5th project of Udacity front-end web developer nanodegree
 ## APIs 
 - The APIs used in this project are
 > [Geonames](http://geonames.org)
+
 > [Weatherbit](http://weatherbit.io)
+
 > [Pixabay](http://pixabay.com)
 
 
