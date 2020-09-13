@@ -5,7 +5,7 @@ const express = require("express");
 const { getGeoData, getForcastWeather, getCurrentWeather, getPixaBayPhoto } = require("./apiHelper");
 
 const app = express();
-
+const PORT = process.env.PORT || 3000;
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -31,8 +31,8 @@ app.get("/", (req, res) => {
   res.sendFile("dist/index.html");
 });
 
-app.listen(3000, () => {
-  console.log(`App listening on localhost 3000`);
+app.listen(PORT, () => {
+  console.log(`App listening on localhost ${PORT}`);
 });
 
 app.get('/geoData/:destination', (request, response) => {
