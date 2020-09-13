@@ -11,7 +11,7 @@
     "start": "node src/server/server.js",
     "build-prod": "webpack --config webpack.prod.js",
     "build-dev": "webpack-dev-server  --config webpack.dev.js --open",
-    "heroku-postbuild": "yarn build-prod"
+    "heroku-postbuild": "yarn build-prod --port 8080 --host localhost "
   },
   "dependencies": {
     "dotenv": "^8.2.0",
