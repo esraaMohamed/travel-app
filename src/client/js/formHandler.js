@@ -23,7 +23,7 @@ function handleSubmit(event) {
     document.getElementById('error').setAttribute('hidden', '')
     console.log("::: Form Submitted :::")
 
-    fetch(`/geoData/${destination}`)
+    fetch(`http://localhost:3000/geoData/${destination}`)
         .then(data => data.json())
         .then((data) => {
             const city = data.geonames[0].name
@@ -35,7 +35,7 @@ function handleSubmit(event) {
             document.getElementById('trip-info').innerHTML = TripInfoComponent(city, country)
             document.getElementById('destination-info').innerHTML = DestinationInfoComponent(city, country, population, toponymName, countryCode, fcodeName)
             if (!isForcastChecked) {
-                fetch(`/getCurrentWeather/${data.geonames[0].lat}&${data.geonames[0].lng}`)
+                fetch(`http://localhost:3000/getCurrentWeather/${data.geonames[0].lat}&${data.geonames[0].lng}`)
                     .then(weatherData => weatherData.json()).then(weatherData => {
                         const timezone = weatherData.data[0].timezone
                         const temperature = weatherData.data[0].temp
@@ -47,7 +47,7 @@ function handleSubmit(event) {
                         document.getElementById('current-weather').innerHTML = CurrentWeatherCompontent(city, timezone, temperature, sunrise, sunset, imgSrc, weatherCondition)
                     })
             } else {
-                fetch(`/getWeatherForcast/${data.geonames[0].lat}&${data.geonames[0].lng}`)
+                fetch(`http://localhost:3000/getWeatherForcast/${data.geonames[0].lat}&${data.geonames[0].lng}`)
                     .then(weatherData => weatherData.json())
                     .then(weatherData => {
                         weatherData.data.map(d => {
@@ -71,7 +71,7 @@ function handleSubmit(event) {
                         })
                     })
             }
-        }).then(fetch(`/getPhoto/${destination}`).then(data => data.json()).then(data => {
+        }).then(fetch(`http://localhost:3000/getPhoto/${destination}`).then(data => data.json()).then(data => {
             const imgSrc = data.hits[0].webformatURL
             const width = data.hits[0].webformatWidth
             const height = data.hits[0].webformatHeight
